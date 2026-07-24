@@ -800,6 +800,26 @@
     border-top: 1px solid var(--border);
     margin: 0.85rem 0;
   }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.2rem 0;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  th, td {
+    padding: 0.65rem 0.85rem;
+    text-align: left;
+    border: 1px solid var(--border-subtle);
+  }
+  th {
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+  }
+  tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.015);
+  }
 }
 
 // ══════════════════════════════════════════════════════════════════
