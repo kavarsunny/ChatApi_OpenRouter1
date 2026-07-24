@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "outputDirectory": "dist/chat-ui/browser",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
