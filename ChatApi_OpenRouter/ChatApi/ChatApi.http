@@ -1,0 +1,13 @@
+@ChatApi_HostAddress = http://localhost:5068
+
+POST {{ChatApi_HostAddress}}/api/chat
+Content-Type: application/json
+
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello, who are you?"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+# ─────────────────────────────────────────────────────────────────
+# .NET / ASP.NET Core
+# ─────────────────────────────────────────────────────────────────
+
+## Build output
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+out/
+
+## NuGet packages
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+# Restore lock file IS committed intentionally; remove this if you don't want it:
+# packages.lock.json
+
+## Publish output
+[Pp]ublish/
+PublishProfiles/
+
+## .NET tools
+.dotnet/
+
+# ─────────────────────────────────────────────────────────────────
+# SECRETS & SENSITIVE DATA  ← primary reason for this file
+# ─────────────────────────────────────────────────────────────────
+
+## Never commit files that contain real API keys or connection strings.
+## Use .NET User Secrets (dotnet user-secrets) or environment variables instead.
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+appsettings.local.json
+appsettings.*.local.json
+
+## .NET User Secrets storage (managed by the SDK, outside the project dir)
+## These live in %APPDATA%\Microsoft\UserSecrets\ — already outside repo.
+secrets.json
+
+## Environment files sometimes used with Docker / docker-compose
+.env
+.env.*
+!.env.example
+
+## Azure / AWS / GCP credential files that may end up in the project
+*.pfx
+*.p12
+*.key
+*.pem
+servicePrincipal.json
+local.settings.json          # Azure Functions local settings
+
+# ─────────────────────────────────────────────────────────────────
+# Visual Studio / Rider / VS Code
+# ─────────────────────────────────────────────────────────────────
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+## Rider
+.idea/
+*.sln.iml
+
+## VS Code (keep shared workspace settings, ignore personal overrides)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# ─────────────────────────────────────────────────────────────────
+# Test results & coverage
+# ─────────────────────────────────────────────────────────────────
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+*.trx
+
+# ─────────────────────────────────────────────────────────────────
+# OS generated files
+# ─────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# ─────────────────────────────────────────────────────────────────
+# Temporary / misc
+# ─────────────────────────────────────────────────────────────────
+*.tmp
+*.bak
+*.swp
+*~
