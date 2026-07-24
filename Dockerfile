@@ -21,4 +21,7 @@ COPY --from=build /app/publish .
 ENV PORT=8080
 ENV ASPNETCORE_URLS=http://+:${PORT}
 
+# Fix for Render inotify (FileSystemWatcher) limit crash
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+
 ENTRYPOINT ["dotnet", "ChatApi.dll"]
