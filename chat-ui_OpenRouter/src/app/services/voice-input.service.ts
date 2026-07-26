@@ -34,11 +34,19 @@ export class VoiceInputService implements OnDestroy {
   /** Final confirmed transcript ready to append */
   readonly finalTranscript = signal('');
 
+  /** Voice error message */
+  readonly voiceError = signal('');
+
   private recognition: SpeechRecognitionType | null = null;
 
   constructor(private readonly ngZone: NgZone) {
     if (!SpeechAPI) {
       this.voiceState.set(VoiceState.Unsupported);
+      if (typeof window !== 'undefined' && !window.isSecureContext) {
+        this.voiceError.set('Microphone requires a secure connection (HTTPS).');
+      } else {
+        this.voiceError.set('Speech recognition is not supported in this browser.');
+      }
       return;
     }
 
@@ -76,6 +84,14 @@ export class VoiceInputService implements OnDestroy {
       this.ngZone.run(() => {
         this.voiceState.set(VoiceState.Idle);
         this.interimTranscript.set('');
+        
+        if (event.error === 'not-allowed') {
+          this.voiceError.set('Microphone access denied or requires HTTPS.');
+        } else if (event.error === 'network') {
+          this.voiceError.set('Network error occurred during speech recognition.');
+        } else {
+          this.voiceError.set('Voice input error: ' + event.error);
+        }
       });
     };
 
@@ -99,6 +115,7 @@ export class VoiceInputService implements OnDestroy {
     if (!this.recognition || !this.isSupported) return;
     this.interimTranscript.set('');
     this.finalTranscript.set('');
+    this.voiceError.set('');
     this.voiceState.set(VoiceState.Listening);
     try {
       this.recognition.start();

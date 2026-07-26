@@ -96,6 +96,16 @@ export class ChatComponent implements OnInit, OnDestroy {
         });
       }
     });
+
+    // Surface voice errors
+    effect(() => {
+      const vError = this.voiceService.voiceError();
+      if (vError) {
+        this.ngZone.run(() => {
+          this.errorMessage = vError;
+        });
+      }
+    });
   }
 
   ngOnInit(): void {
